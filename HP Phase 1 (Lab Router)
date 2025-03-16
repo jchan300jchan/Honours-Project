@@ -1,0 +1,23 @@
+import random 
+import string
+
+#############################
+
+def passGenerator():
+    length = random.randint(8, 16)  # Choose a random length between 8 and 16
+    char = string.ascii_letters + string.digits  # uses the ascii and numbers - A-Z, a-z, 0-9
+    password = ''.join(random.choices(char, k=length))  # Generates the password
+    return password  # Returns the generated password
+
+#############################
+
+# Main script execution
+if __name__ == "__main__":  # Ensure this script runs only when executed
+    fileName = "Password List 2025.txt"  # Creates tge file name
+    with open(fileName, "w") as file:  # Open the file in write mode
+        for _ in range(100):  # Generates the 100 passwords
+            file.write(passGenerator() + "\n")  # Writes each password to the file
+
+    print("Generated 100 passwords saved to Password List 2025.txt")
+
+#############################
